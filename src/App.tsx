@@ -19,14 +19,16 @@ const FloatingMenu = forwardRef<HTMLDivElement, FloatingMenuProps>(
           top: y,
           left: x,
           backgroundColor: "rgba(245, 245, 245, 0.6)",
-          backdropFilter: "blur(5px)", 
-          border: "1px solid rgba(0, 0, 0, 1)", 
+          backdropFilter: "blur(5px)",
+          border: "1px solid rgba(0, 0, 0, 1)",
           padding: "10px",
-          color: "rgba(0, 0, 0, 1)", 
+          color: "rgba(0, 0, 0, 1)",
           zIndex: 1000,
         }}
       >
-        <pre style={{ textAlign: "left", margin: 0, fontWeight: 'bold' }}>{message}</pre>
+        <pre style={{ textAlign: "left", margin: 0, fontWeight: "bold" }}>
+          {message}
+        </pre>
       </div>
     );
   }
@@ -44,10 +46,10 @@ function App() {
     const start = target.selectionStart;
     const end = target.selectionEnd;
     const selectedText = target.value.substring(start, end);
-    setMessage(`Selected text: ${selectedText}
-Start: ${start}
-End: ${end}`);
-    setShowMenu(true);
+    if (selectedText) {
+      setMessage(`Selected text: ${selectedText}\nStart: ${start}\nEnd: ${end}`);
+      setShowMenu(true);
+    }
   };
 
   useEffect(() => {
